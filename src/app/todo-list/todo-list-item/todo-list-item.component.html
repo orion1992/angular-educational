@@ -1,0 +1,9 @@
+<div class="todo-list-item">
+  {{idx + 1}}. {{todo.description}}
+  <div>
+    <input type="checkbox" (input)="handleItemRemove()" [disabled]="disabled" [(ngModel)]="todo.completed" />
+  </div>
+  <div *ngIf="todo.completedDate">
+    {{todo.completedDate | date: 'medium'}}
+  </div>
+</div>

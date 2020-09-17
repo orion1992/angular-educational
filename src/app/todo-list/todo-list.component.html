@@ -1,0 +1,30 @@
+<p>Todos list</p>
+<div>
+  <label for="todo_name">
+    Please, enter your ToDo item description
+    <input id="todo_name" type="text" [(ngModel)]="todoDescription" (keydown.enter)="handleAddItem()" />
+  </label>
+  <button (click)="handleAddItem()">
+    Add item
+  </button>
+  <section class="todo-list">
+    <div>
+      new todos
+      <app-todo-list-item
+        *ngFor="let todo of todosItems; let idx = index"
+        [todo]="todo"
+        [onDestroy]="handleDeleteItem"
+        [idx]="idx"
+      ></app-todo-list-item>
+    </div>
+    <div>
+      completed todos
+      <app-todo-list-item
+        *ngFor="let todo of completedTodosItems; let idx = index"
+        [todo]="todo"
+        [disabled]="true"
+        [idx]="idx"
+      ></app-todo-list-item>
+    </div>
+  </section>
+</div>
